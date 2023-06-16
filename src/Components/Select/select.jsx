@@ -1,16 +1,18 @@
 import React from "react";
 import Label from "../label/label";
-const Select = ({labelName,fieldName,value,name})=>{
+const Select = ({labelName,fieldName,manageData,name})=>{
+
     return (
         <>
-        {
+            {
                 labelName ? <Label name={labelName}/> : null
             }
-            <select onChange={value} name={name}>
+            <select onChange={manageData} name={name} >
                 {
-               fieldName.map((data,index)=>{
+
+                   fieldName.map((data,index)=>{
                     return (
-                        <option key={index} value={data}>{data}</option>
+                        <option key={index} value={data} >{data}</option>
                     )
                })
             }

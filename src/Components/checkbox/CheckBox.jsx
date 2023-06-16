@@ -1,33 +1,22 @@
-import Input from '../Input/input';
 import Label from '../label/label';
-const CheckBox = ({labelName,fieldName,name,data}) => {
+const CheckBox = ({labelName,fieldName, updateSkills,type}) => {
 
-  let skills = [];
-
-  function updateSkills(e)
+  function handleChange(e)
   {
-
-    let val = e.target.value;
-    if(e.target.checked && !skills.includes(val))
-      skills = [...skills,  val];
-    
-    if(e.target.checked===false && skills.includes(val))
-    {
-      skills= skills.filter((skill)=>skill!==val);
-    }
-    data.skills=skills;
+    updateSkills(e);
   }
 
   return (
     <>
-    {
-                labelName ? <Label name={labelName}/> : null
-            }
+          {
+              labelName ? <Label name={labelName}/> : null
+          }
         <span>
             {
                fieldName.map((data,index)=>{
                     return (<div key={index} >
-                        <Input fieldType={"checkBox"} name={name} onUpdate={updateSkills} svalue={data}/>{data}
+                          <input type={type} onClick={handleChange} value={data}/>{data}
+                          {/* <Label name={data }/> */}
                         </div>
                     )
                })

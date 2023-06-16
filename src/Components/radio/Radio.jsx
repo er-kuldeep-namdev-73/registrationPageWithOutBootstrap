@@ -1,19 +1,21 @@
 import React from 'react';
 import Input from '../Input/input';
 import Label from '../label/label';
-const Radio = ({labelName,fieldName, value}) => {
+const Radio = ({labelName,fieldName,manageData}) => {
 
   return (
     <>
-            {
-                labelName ? <Label name={labelName}/> : null
-            }
+         {
+            labelName ? <Label name={labelName}/> : null
+         }
         <span>
             {
                fieldName.map((data,index)=>{
-                    return (<>
-                        <Input fieldType={"radio"} key={index} name={"gender"} innerValue = {data} value={value} />{data}
-                        </>
+                    return (<span key={index}>
+                        <Input fieldType={"radio"}  name="gender" svalue={data} manageData={manageData}/>{data}
+                        
+                        </span>
+   
                     )
                })
             }
